@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRide Electric Bikes - Never Stop Riding</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://api.deepai.org/job-view-file/246376bf-e561-4389-8526-b3be6d7e7c1e/outputs/output.jpg');
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10px, 10px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .feature-pill {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .feature-pill:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.3);
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(238, 90, 36, 0.4);
+        }
+
+        .bike-showcase {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            text-align: center;
+        }
+
+        .bike-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin: 3rem auto;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bike-image:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .features-section {
+            padding: 5rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .safety-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .safety-guarantee {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 30px;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .price-section {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .price-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: scale(1.05);
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+
+        .buy-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem 4rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .buy-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 45px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover { color: #000; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .hero-features { gap: 1rem; }
+            .section-title { font-size: 2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SafeRide Electric</h1>
+            <p class="subtitle">The smartest electric bike that never leaves you stranded</p>
+            <div class="hero-features">
+                <div class="feature-pill">🔋 Smart Battery Management</div>
+                <div class="feature-pill">⚡ Auto Motor Disconnect</div>
+                <div class="feature-pill">🚴 Always Rideable</div>
+            </div>
+            <a href="#buy" class="cta-button">Discover SafeRide</a>
+        </div>
+    </section>
+
+    <!-- Bike Showcase -->
+    <section class="bike-showcase">
+        <div class="container">
+            <h2 class="section-title">Meet Your Perfect Ride</h2>
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjZjhmOWZhIi8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjMwMCIgcj0iNjAiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+CjxjaXJjbGUgY3g9IjQ1MCIgY3k9IjMwMCIgcj0iNjAiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+CjxsaW5lIHgxPSIxNTAiIHkxPSIzMDAiIHgyPSI0NTAiIHkyPSIzMDAiIHN0cm9rZT0iIzY2NmRkZCIgc3Ryb2tlLXdpZHRoPSI4Ii8+CjxsaW5lIHgxPSIyMDAiIHkxPSIyNDAiIHgyPSIzMDAiIHkyPSIyODAiIHN0cm9rZT0iIzY2NmRkZCIgc3Ryb2tlLXdpZHRoPSI2Ii8+CjxsaW5lIHgxPSI0MDAiIHkxPSIyMDAiIHgyPSI0NTAiIHkyPSIzMDAiIHN0cm9rZT0iIzY2NmRkZCIgc3Ryb2tlLXdpZHRoPSI2Ii8+CjxyZWN0IHg9IjI4MCIgeT0iMjcwIiB3aWR0aD0iNDAiIGhlaWdodD0iMjAiIGZpbGw9IiM2NjZkZGQiIHJ4PSI0Ii8+CjxjaXJjbGUgY3g9IjM4MCIgY3k9IjE4MCIgcj0iMjAiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjMwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNjY2ZGRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TYWZlUmlkZSBFbGVjdHJpYzwvdGV4dD4KPHN2Zz4=" alt="SafeRide Electric Bike" class="bike-image">
+            <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">Sleek, modern design meets cutting-edge safety technology. When your battery runs low, the motor seamlessly disconnects, transforming your electric bike into a smooth manual ride.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Revolutionary Safety Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔋</div>
+                    <h3>Smart Battery System</h3>
+                    <p>Advanced lithium-ion battery with intelligent power management. Real-time monitoring ensures optimal performance and longevity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Auto Motor Disconnect</h3>
+                    <p>When battery reaches critical level, the motor automatically disengages, allowing you to pedal normally without any resistance or safety concerns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚴</div>
+                    <h3>Seamless Transition</h3>
+                    <p>Experience the smoothest transition from electric to manual mode. No jerky stops, no sudden changes - just continuous, safe riding.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Safety First Design</h3>
+                    <p>Every component is engineered with safety as the priority. LED lights, reflective elements, and robust braking system included.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Smart Connectivity</h3>
+                    <p>Connect via Bluetooth to monitor battery life, track rides, and receive maintenance alerts through our mobile app.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Eco-Friendly</h3>
+                    <p>Reduce your carbon footprint while enjoying the convenience of electric assistance when you need it most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Guarantee -->
+    <section class="safety-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Never Stranded Guarantee</h2>
+            <div class="safety-guarantee">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">🛡️ 100% Safety Promise</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Our patented Auto-Disconnect Technology ensures that when your battery dies, the motor instantly disengages, transforming your SafeRide into a perfectly functional manual bicycle. No sudden stops, no resistance, no safety risks.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                        <div>Instant Motor Disconnect</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                        <div>Zero Resistance</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                        <div>Smooth Transition</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                        <div>Always Rideable</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="price-section" id="buy">
+        <div class="container">
+            <h2 class="section-title">Get Your SafeRide Today</h2>
+            <div class="price-card">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">SafeRide Electric Bike</h3>
+                <div class="price">$999.99</div>
+                <p style="color: #666; margin-bottom: 2rem;">Free shipping • 2-year warranty • 30-day money-back guarantee</p>
+                <ul style="text-align: left; margin: 2rem 0; color: #666;">
+                    <li style="margin: 0.5rem 0;">✓ Auto Motor Disconnect Technology</li>
+                    <li style="margin: 0.5rem 0;">✓ 50-mile battery range</li>
+                    <li style="margin: 0.5rem 0;">✓ Lightweight aluminum frame</li>
+                    <li style="margin: 0.5rem 0;">✓ LED lighting system</li>
+                    <li style="margin: 0.5rem 0;">✓ Mobile app connectivity</li>
+                    <li style="margin: 0.5rem 0;">✓ Professional assembly included</li>
+                </ul>
+                <button class="buy-button" onclick="openModal()">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SafeRide Electric. Revolutionizing urban mobility with safety-first technology.</p>
+        </div>
+    </footer>
+
+    <!-- Purchase Modal -->
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>🎉 Ready to Order Your SafeRide?</h2>
+            <p style="margin: 2rem 0;">Thank you for choosing SafeRide Electric! This is a demo website showcasing the product concept.</p>
+            <p style="color: #666;">In a real implementation, this would connect to a payment processor and inventory system.</p>
+            <button style="background: #667eea; color: white; border: none; padding: 1rem 2rem; border-radius: 10px; margin-top: 1rem; cursor: pointer;" onclick="closeModal()">Got it!</button>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Modal functionality
+        function openModal() {
+            document.getElementById('purchaseModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('purchaseModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('purchaseModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
